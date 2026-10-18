@@ -1,0 +1,138 @@
+# ==========================================================
+#  .gitignore - Xilinx ISE / Spartan-3E Verilog project
+# ==========================================================
+
+# ---- ISE generated project directories ----
+_ngo/
+_xmsgs/
+xst/
+xlnx_auto_0_xdb/
+iseconfig/
+tmp/
+planAhead_run_*/
+isim/
+work/
+
+# ---- ISE synthesis / implementation outputs ----
+*.ngc
+*.ngd
+*.ngr
+*.ncd
+*.pcf
+*.prj
+*.xst
+*.lso
+*.syr
+*.bld
+*.map
+*.mrp
+*.par
+*.pad
+*.pad_txt
+*.csv
+*.ptwx
+*.twr
+*.twx
+*.unroutes
+*.xpi
+*.xrpt
+*.xml
+*.html
+*.cmd_log
+*.stx
+*.ut
+*.xwbt
+*.gise
+*.bgn
+*.drc
+*.bit
+*.bin
+*.mcs
+*.rbt
+*.ngm
+*.ise
+*.restore
+*.ipf
+*.psf
+*.spi
+*.svf
+webtalk*
+usage_statistics_webtalk.*
+_impact.*
+*_summary.html
+*_usage.xml
+*.lst
+*.ntrc_log
+*.ver
+*.vdbl
+
+# ---- ISim simulation outputs ----
+*.wdb
+*.wcfg
+isim.log
+isim.wdb
+fuse.log
+fuse.xmsgs
+*.exe
+*.vcd
+
+# ---- CORE Generator (keep only .xco and .coe sources) ----
+coregen.cgp
+coregen.cgc
+ipcore_dir/*
+!ipcore_dir/*.xco
+!ipcore_dir/*.coe
+*.asy
+*.gise
+*.veo
+*.vho
+*.sym
+
+# ---- ModelSim / Questa ----
+transcript
+vsim.wlf
+modelsim.ini
+*.mpf
+*.mti
+
+# ---- MATLAB ----
+*.asv
+*.autosave
+slprj/
+*.mex*
+*.mat
+
+# ---- Generated simulation / result data ----
+# Un-comment next line to keep the dump out of git
+# filtered_output.txt
+
+# ---- OS / editor files ----
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# ---- Keep these important files (override rules above) ----
+!*.v
+!*.vhd
+!*.ucf
+!*.xco
+!*.coe
+!*.xise
+!*.m
+!*.md
+!docs/**
+!docs/images/*.png
+
+# extra generated files
+*.mif
+xilinxsim.ini
+fuseRelaunch.cmd
+isim.cmd
+*_beh.prj
+*.xrpt
+webtalk_pn.xml

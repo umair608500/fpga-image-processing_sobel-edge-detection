@@ -1,0 +1,15 @@
+0.6
+2019.1
+May 24 2019
+15:06:07
+C:/WORK/Filter2/Filter2/Filter2/Count.v,1778501930,verilog,,C:/WORK/Filter2/Filter2/Filter2/vga_timing.v,,Count,,,,,,,,
+C:/WORK/Filter2/Filter2/Filter2/SobelCore.v,1778506168,verilog,,C:/WORK/Filter2/Filter2/Filter2/line_buffer.v,,SobelCore,,,,,,,,
+C:/WORK/Filter2/Filter2/Filter2/Sum.v,1778506492,verilog,,C:/WORK/Filter2/Filter2/Filter2/SobelCore.v,,Sum,,,,,,,,
+C:/WORK/Filter2/Filter2/Filter2/Top_Sobel.v,1778954769,verilog,,C:/WORK/Filter2/Filter2/Filter2/image_processing/image_processing.srcs/sources_1/ip/BlockRAM/sim/BlockRAM.v,,Top_Sobel,,,,,,,,
+C:/WORK/Filter2/Filter2/Filter2/clk_div_25.v,1778953892,verilog,,C:/WORK/Filter2/Filter2/Filter2/Top_Sobel.v,,clk_div_25,,,,,,,,
+C:/WORK/Filter2/Filter2/Filter2/image_processing/image_processing.sim/sim_1/behav/xsim/glbl.v,1558713910,verilog,,,,glbl,,,,,,,,
+C:/WORK/Filter2/Filter2/Filter2/image_processing/image_processing.srcs/sources_1/ip/B1/sim/B1.v,1792332408,verilog,,C:/WORK/Filter2/Filter2/Filter2/Count.v,,B1,,,,,,,,
+C:/WORK/Filter2/Filter2/Filter2/image_processing/image_processing.srcs/sources_1/ip/BlockRAM/sim/BlockRAM.v,1792331971,verilog,,C:/WORK/Filter2/Filter2/Filter2/tb_Top_Sobel.v,,BlockRAM,,,,,,,,
+C:/WORK/Filter2/Filter2/Filter2/line_buffer.v,1778954936,verilog,,C:/WORK/Filter2/Filter2/Filter2/clk_div_25.v,,line_buffer,,,,,,,,
+C:/WORK/Filter2/Filter2/Filter2/tb_Top_Sobel.v,1778953458,verilog,,,,tb_Top_Sobel_Sequential,,,,,,,,
+C:/WORK/Filter2/Filter2/Filter2/vga_timing.v,1778955010,verilog,,C:/WORK/Filter2/Filter2/Filter2/Sum.v,,vga_timing,,,,,,,,

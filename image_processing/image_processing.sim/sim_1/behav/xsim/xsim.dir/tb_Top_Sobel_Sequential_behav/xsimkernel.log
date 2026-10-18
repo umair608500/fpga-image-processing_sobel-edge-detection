@@ -1,0 +1,7 @@
+Running: xsim.dir/tb_Top_Sobel_Sequential_behav/xsimk.exe -simmode gui -wdb tb_Top_Sobel_Sequential_behav.wdb -simrunnum 0 -socket 54789
+Design successfully loaded
+Design Loading Memory Usage: 8928 KB (Peak: 8928 KB)
+Design Loading CPU Usage: 0 ms
+Simulation completed
+Simulation Memory Usage: 18148 KB (Peak: 18148 KB)
+Simulation CPU Usage: 546 ms

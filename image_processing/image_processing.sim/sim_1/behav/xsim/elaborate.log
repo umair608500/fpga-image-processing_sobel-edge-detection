@@ -1,0 +1,26 @@
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: E:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto 85030670135a45d087214288a350dcb4 --incr --debug typical --relax --mt 2 -L blk_mem_gen_v8_4_3 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_Top_Sobel_Sequential_behav xil_defaultlib.tb_Top_Sobel_Sequential xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.clk_div_25
+Compiling module xil_defaultlib.vga_timing
+Compiling module blk_mem_gen_v8_4_3.blk_mem_gen_v8_4_3_output_stage(...
+Compiling module blk_mem_gen_v8_4_3.blk_mem_gen_v8_4_3_softecc_outpu...
+Compiling module blk_mem_gen_v8_4_3.blk_mem_gen_v8_4_3_mem_module(C_...
+Compiling module blk_mem_gen_v8_4_3.blk_mem_gen_v8_4_3(C_FAMILY="spa...
+Compiling module xil_defaultlib.B1
+Compiling module xil_defaultlib.line_buffer
+Compiling module xil_defaultlib.SobelCore
+Compiling module xil_defaultlib.Sum
+Compiling module blk_mem_gen_v8_4_3.blk_mem_gen_v8_4_3_mem_module(C_...
+Compiling module blk_mem_gen_v8_4_3.blk_mem_gen_v8_4_3(C_FAMILY="spa...
+Compiling module xil_defaultlib.BlockRAM
+Compiling module xil_defaultlib.Top_Sobel
+Compiling module xil_defaultlib.tb_Top_Sobel_Sequential
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_Top_Sobel_Sequential_behav

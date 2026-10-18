@@ -1,0 +1,10 @@
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module tb_Top_Sobel_Sequential.uut.B1.inst.native_mem_module.blk_mem_gen_v8_4_3_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module tb_Top_Sobel_Sequential.uut.B2.inst.native_mem_module.blk_mem_gen_v8_4_3_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Processing image... this will take a moment.
+Done at 4069230000 - starting readback
+Dump complete! You can now check filtered_output.txt
+$finish called at time : 5379950 ns : File "C:/WORK/Filter2/Filter2/Filter2/tb_Top_Sobel.v" Line 97
