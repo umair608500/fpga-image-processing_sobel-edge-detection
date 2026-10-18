@@ -5,14 +5,16 @@
 ![Tool](https://img.shields.io/badge/Tool-Xilinx%20ISE-orange)
 ![Verification](https://img.shields.io/badge/Verification-Simulation%20%2B%20MATLAB-green)
 
+📄 **[Full Project Report (PDF)](Project_report/project_report.pdf)**
+
 A fully pipelined, hardware implementation of the **Sobel edge detection** algorithm written in Verilog and targeted at a **Xilinx Spartan-3E** FPGA. A 128×128, 8-bit grayscale image is stored in on-chip Block ROM, streamed through a line-buffer based 3×3 convolution engine, and the edge-magnitude result is written to Block RAM and driven to a **640×480 @ 60 Hz VGA** timing generator.
 
 <p align="center">
-  <img src="docs/images/input_image.png" width="260" alt="Input image"/>
+  <img src="reference_images/input_image.png" width="260" alt="Input image"/>
   &nbsp;&nbsp;➜&nbsp;&nbsp;
-  <img src="docs/images/sobel_output.png" width="260" alt="Sobel output"/>
+  <img src="reference_images/VGA_output.png" width="260" alt="Sobel output on VGA"/>
 </p>
-<p align="center"><i>Left: 128×128 grayscale input. Right: Sobel edge-detected output produced by the RTL simulation.</i></p>
+<p align="center"><i>Left: 128×128 grayscale input. Right: Sobel edge-detected output displayed over VGA.</i></p>
 
 ---
 
@@ -294,12 +296,15 @@ flowchart LR
 ### Results
 
 <p align="center">
-  <img src="docs/images/matlab_results.png" width="650" alt="MATLAB figures: input image and Sobel edge detected output"/>
+  <img src="reference_images/input_image.png" width="260" alt="Input image"/>
+  &nbsp;&nbsp;➜&nbsp;&nbsp;
+  <img src="reference_images/VGA_output.png" width="260" alt="Sobel output displayed over VGA"/>
 </p>
+<p align="center"><i>Input image (left) and Sobel output on the VGA display (right).</i></p>
 
 - The output clearly shows the outline of the cat, the question mark, and the rounded border of the input.
 - Flat regions map to black (zero gradient); strong intensity transitions map to white.
-- The MATLAB script reports successful reconstruction and saves `filtered_image.png`.
+- The MATLAB script reconstructs the image from `filtered_output.txt` and saves `filtered_image.png`.
 
 ### Verification summary
 
@@ -309,9 +314,8 @@ flowchart LR
 | VGA timing (800 × 525 totals, sync polarity) | Waveform inspection | ✅ |
 | Sobel arithmetic and saturation | Visual comparison with expected edge map | ✅ |
 | Full-frame output (16384 pixels) | `filtered_output.txt` → MATLAB reconstruction | ✅ |
-| On-board VGA display | Spartan-3E board and monitor | *(fill in if tested)* |
+| On-board VGA display | Spartan-3E board and monitor (`VGA_output.png`) | ✅ |
 
-> **Tip:** add a simulation waveform screenshot to `docs/images/waveform.png` and, if you have one, a numeric comparison (for example, mean absolute difference against MATLAB's `edge(img,'sobel')` or a custom reference model).
 
 ---
 
@@ -375,32 +379,25 @@ flowchart LR
 ## 15. Repository Structure
 
 ```
-fpga-sobel-edge-detection/
-├── src/
-│   ├── Top_Sobel.v
-│   ├── clk_div_25.v
-│   ├── vga_timing.v
-│   ├── line_buffer.v
-│   ├── SobelCore.v
-│   ├── Sum.v
-│   └── Count.v
-├── ip/
-│   ├── B1.xco              # Block ROM (CORE Generator project file)
-│   ├── BlockRAM.xco        # Block RAM (CORE Generator project file)
-│   └── image.coe           # ROM initialisation data
-├── sim/
-│   └── tb_Top_Sobel.v
-├── matlab/
-│   └── reconstruct_image.m # reads filtered_output.txt, saves filtered_image.png
-├── constraints/
-│   └── Top_Sobel.ucf       # pin constraints (Spartan-3E board)
-├── docs/
-│   └── images/
-│       ├── input_image.png
-│       ├── sobel_output.png
-│       └── matlab_results.png
+fpga-image-processing_sobel-edge-detection/
+├── Top_Sobel.v              # Top-level module
+├── clk_div_25.v             # 50 MHz -> 25 MHz clock divider
+├── vga_timing.v             # 640x480 @ 60 Hz VGA timing generator
+├── line_buffer.v            # Line buffers + 3x3 window
+├── SobelCore.v              # Gx / Gy convolution
+├── Sum.v                    # |Gx| + |Gy|, saturation
+├── Count.v                  # X/Y raster counter
+├── tb_Top_Sobel.v           # Testbench (dumps filtered_output.txt)
+├── image_data.coe           # Block ROM initialisation data
+├── ipcore_dir/              # CORE Generator IP (Block ROM / Block RAM)
+├── Filter2.xise             # Xilinx ISE project file
+├── filtered_output.txt      # Simulation output (16384 pixels)
+├── reference_images/
+│   ├── input_image.png
+│   └── VGA_output.png
+├── Project_report/
+│   └── project_report.pdf
 ├── .gitignore
-├── LICENSE
 └── README.md
 ```
 
@@ -410,15 +407,15 @@ fpga-sobel-edge-detection/
 
 ### Simulation
 
-1. Open the project in Xilinx ISE (or create a new project and add `src/`, `ip/` and `sim/` files).
-2. Regenerate the Block ROM `B1` (using `image.coe`) and Block RAM `B2` with CORE Generator.
-3. Set `tb_Top_Sobel_Sequential` as the simulation top module and run behavioural simulation.
-4. Wait for the console message `Dump complete!`. The file `filtered_output.txt` is created in the simulation directory.
-5. Run the MATLAB script in `matlab/` to reconstruct and view `filtered_image.png`.
+1. Clone the repository and open `Filter2.xise` in Xilinx ISE.
+2. If the IP cores need regenerating, re-create Block ROM `B1` and Block RAM `B2` in CORE Generator (`B1` is initialised from `image_data.coe`).
+3. Set `tb_Top_Sobel` (module `tb_Top_Sobel_Sequential`) as the simulation top and run behavioural simulation in ISim.
+4. Wait for the console message `Dump complete!`. The file `filtered_output.txt` contains the 16,384 output pixels.
+5. Reshape the values to 128×128 in MATLAB (or Python) to view the filtered image.
 
 ### Hardware
 
-1. Assign pins in `constraints/Top_Sobel.ucf` for `clk_50`, `reset`, `hsync`, `vsync` and the VGA colour lines of your board.
+1. Create a `.ucf` constraints file that assigns pins for `clk_50`, `reset`, `hsync`, `vsync` and the VGA colour lines of your board.
 2. Synthesise, implement and generate the programming file.
 3. Program the Spartan-3E board and connect a VGA monitor. The Sobel-filtered image appears in the top-left 128×128 region.
 
@@ -429,7 +426,7 @@ fpga-sobel-edge-detection/
 **Umair**
 Computer Engineering, COMSATS University Islamabad
 
-- GitHub: [@your-username](https://github.com/your-username)
+- GitHub: [@umair608500](https://github.com/umair608500)
 - LinkedIn: *your-link*
 
 ---
