@@ -427,7 +427,7 @@ fpga-image-processing_sobel-edge-detection/
 Computer Engineering, COMSATS University Islamabad
 
 - GitHub: [@umair608500](https://github.com/umair608500)
-- LinkedIn: *your-link*
+- LinkedIn: https://www.linkedin.com/in/umair6085
 
 ---
 
